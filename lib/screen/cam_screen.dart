@@ -122,7 +122,6 @@ class _CamScreenState extends State<CamScreen> {
           // builder 네임드 파라미터에 Future 값에 따라 다르게 렌더링해주고 싶은 로직을 작성하면 된다.
           // AsyncSnapshot은 future 매개변수에 입력한 함수의 결과값 및 에러를 제공해주는 역할을 한다.
           // AsyncSnapshot에서 제공하는 값이 변경될 때마다 builder() 함수가 재실행된다. 즉, future의 init() 함수의 결과값 및 에러가 변경될 때마다 재실행된다.
-
           if(snapshot.hasError){
             return Center(
               child: Text(
@@ -131,9 +130,12 @@ class _CamScreenState extends State<CamScreen> {
             );
           }
 
-          // AsyncScnapshot<T> 클래스는 불변 객체이다.
-          // 여기서 불변 객체란, 인스턴스가 생성되면 그 인스턴스의 상태를 변경할 수 없음을 의미한다.
-          // 내부 상태(data, error, conectionState)가 변경되지 않는다.
+          // AsyncSnapshot<T> 클래스는 불변 객체이다.
+          // build() 함수가 재실행되면서, FutureBuilder() 함수가 재실행되고, future 매개변수의 init() 함수가 재실행되는데,
+          // 비동기 함수인 init() 함수가 재실행되면서 필연적으로, ConnectionState.waiting으로 변했다가 ConnectionState.done으로 변하게 된다.
+          // 로딩중일때의 조건에 snapshot.ConnectionState == ConnectionState.waiting을 사용할 수 있지만,
+          // 불변 객체인 AsyncSnapshot의 snapshot.hasData가 true로 캐싱이 되어있기 때문에 로딩중일때의 조건에 !snapshot.hasData를 이용해야,
+          // 사용자에게 로딩중인 UI가 효용없이 잠깐 뜨는 것을 방지할 수 있다.
           if(!snapshot.hasData){
             return Center(
               child: CircularProgressIndicator(color: Colors.blue[500]),
