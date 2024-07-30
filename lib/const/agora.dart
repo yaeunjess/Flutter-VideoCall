@@ -1,0 +1,7 @@
+const APP_ID = '0e5bc29963d34f20bda64937b3a8f774';
+const CHANNEL_NAME = 'testchannel';
+const TEMP_TOKEN = '007eJxTYNAt9jq6q/dVadO+L3bdRpFxQUyHJ0kKJ8xal8LAV/VjnasCg0GqaVKykaWlmXGKsUmakUFSSqKZiaWxeZJxokWaublJUcmKtIZARgY7Bi8mRgYIBPG5GUpSi0uSMxLz8lJzGBgAxHAgMw==';
+
+// const APP_ID = '40311d3bc676451f80f174f1b0aee3e3';
+// const CHANNEL_NAME = 'testchannel';
+// const TEMP_TOKEN = '007eJxTYOh3kBLdzsGiXtV0x3vylFL/fFPWH6qzNrLP/XqploHt/X4FBhMDY0PDFOOkZDNzMxNTwzQLgzRDc5M0wySDxNRU41TjjJIVaQ2BjAyCtV2MjAwQCOJzM5SkFpckZyTm5aXmMDAAAE1RH7Q=';
